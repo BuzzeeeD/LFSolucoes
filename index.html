@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria Clara - E-commerce</title>
+    <link rel="stylesheet" href="data/styles.css">
+</head>
+<body>
+    <div class="fixed-header">
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar...">
+            <button id="search-button">
+                <img src="data/icons/lupa.png" alt="Buscar">
+            </button>
+        </div>
+        <div class="user-options">
+            <button id="profile-button">
+                <img src="data/icons/perfil.png" alt="Perfil">
+            </button>
+            <div id="user-menu" class="dropdown-content">
+                <a href="#">Entrar</a>
+                <a href="#">Cadastrar</a>
+                <a href="#">Meus Pedidos</a>
+                <a href="#">Minha Conta</a>
+            </div>
+            <button class="cart-button">
+                <img src="data/icons/carrinho.png" alt="Carrinho de Compras">
+                <span class="cart-count">0</span>
+            </button>
+        </div>
+    </div>
+    <header>
+            </div>
+            <div class="logo">
+                <img src="logo.png" alt="logo">
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="openPopup('quemSomosPopup')">Quem Somos</a></li>
+                <li><a href="#" onclick="openPopup('ondeFicamosPopup')">Onde Ficamos</a></li>
+                <li class="dropdown">
+                    <a href="#">Nossos Produtos</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Camisetas</a></li>
+                        <li><a href="#">Macacões</a></li>
+                        <li><a href="#">Vestidos</a></li>
+                        <li><a href="#">Conjuntos</a></li>
+                        <li><a href="#">Ver Todos</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="openPopup('contatoPopup')">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Popup "Quem Somos" -->
+<div id="quemSomosPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('quemSomosPopup')">&times;</span>
+        <h2>Quem Somos</h2>
+        <p>Bem-vindo ao nosso site! Somos uma marca dedicada a oferecer produtos de alta qualidade e estilo único. Nossa missão é proporcionar uma experiência de compra excepcional, combinando inovação com tradição.</p>
+        <p>Nosso time é composto por profissionais apaixonados por moda e design, sempre buscando as últimas tendências e tecnologias para oferecer o melhor para nossos clientes.</p>
+    </div>
+</div>
+
+<!-- Popup "Onde Ficamos" -->
+<div id="ondeFicamosPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('ondeFicamosPopup')">&times;</span>
+        <h2>Onde Ficamos</h2>
+        <p>Nosso showroom está localizado em:</p>
+        <p><strong>Rua Exemplo, 123</strong></p>
+        <p>Bairro Exemplo, Cidade, Estado</p>
+        <p>Estamos abertos de segunda a sexta, das 9h às 18h. Venha nos visitar e conhecer nossa coleção de perto!</p>
+    </div>
+</div>
+
+<!-- Popup "Contato" -->
+<!-- Popup "Contato" -->
+<div id="contatoPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('contatoPopup')">&times;</span>
+        <h2>Contato</h2>
+        <p>Estamos aqui para ajudar! Entre em contato conosco através dos seguintes meios:</p>
+        <div class="contact-item">
+            <img src="data/icons/wpp.png" alt="Telefone" class="contact-icons">
+            <span><strong>Telefone:</strong> (21) 1234-5678</span>
+        </div>
+        <div class="contact-item">
+            <img src="data/icons/email.png" alt="Email" class="contact-icons">
+            <span><strong>Email:</strong> contato@mariaclara.com</span>
+        </div>
+        <p>Você também pode nos seguir nas redes sociais:</p>
+        <div class="contact-item">
+            <a href="#"><img src="data/icons/insta.png" alt="Instagram" class="contact-icons"></a>
+            <a href="#"><img src="data/icons/facebook.png" alt="Facebook" class="contact-icons"></a>
+            <a href="#"><img src="data/icons/twitter.png" alt="Twitter" class="contact-icons"></a>
+        </div>
+    </div>
+</div>
+
+    <main>
+        <section class="novidades">
+            <h2>Novidades</h2>
+            <div class="filter-container">
+                <select id="categorySelect" onchange="filterItems(this.value)">
+                    <option value="todos">Todos</option>
+                    <option value="categoria1">Categoria 1</option>
+                    <option value="categoria2">Categoria 2</option>
+                </select>
+                <button onclick="filterItems('mais-recentes')">Mais Recentes</button>
+            </div>
+            <div class="galeria-container">
+                <div class="galeria">
+                    <div class="image-container categoria1">
+                        <div class="item">
+                            <img src="data/img/Design-sem-nome--40-.webp" alt="Produto 1">
+                        </div>
+                        <div class="info">
+                            <p class="nome">---NOME DA PEÇA---</p>
+                            <p class="preco-original">R$ 295,00 <span class="preco-promocional">R$ 147,50</span></p>
+                            <p class="parcelamento">ou 1x de R$ 147,50</p>
+                        </div>
+                    </div>
+                    <div class="image-container categoria2">
+                        <div class="item">
+                            <img src="data/img/Design-sem-nome--29-.webp" alt="Produto 2">
+                        </div>
+                        <div class="info">
+                            <p class="nome">---NOME DA PEÇA---</p>
+                            <p class="preco-original">R$ 295,00 <span class="preco-promocional">R$ 147,50</span></p>
+                            <p class="parcelamento">ou 1x de R$ 147,50</p>
+                        </div>
+                    </div>
+                    <div class="image-container categoria1">
+                        <div class="item">
+                            <img src="data/img/Design-sem-nome--8-.webp" alt="Produto 3">
+                        </div>
+                        <div class="info">
+                            <p class="nome">---NOME DA PEÇA---</p>
+                            <p class="preco-original">R$ 295,00 <span class="preco-promocional">R$ 147,50</span></p>
+                            <p class="parcelamento">ou 1x de R$ 147,50</p>
+                        </div>
+                    </div>
+                    <div class="image-container categoria2">
+                        <div class="item">
+                            <img src="data/img/0377807-00759-1.webp" alt="Produto 4">
+                        </div>
+                        <div class="info">
+                            <p class="nome">---NOME DA PEÇA---</p>
+                            <p class="preco-original">R$ 295,00 <span class="preco-promocional">R$ 147,50</span></p>
+                            <p class="parcelamento">ou 1x de R$ 147,50</p>
+                        </div>
+                    </div>
+                    <div class="image-container categoria2">
+                        <div class="item">
+                            <img src="data/img/0377807-00759-1.webp" alt="Produto 4">
+                        </div>
+                        <div class="info">
+                            <p class="nome">---NOME DA PEÇA---</p>
+                            <p class="preco-original">R$ 295,00 <span class="preco-promocional">R$ 147,50</span></p>
+                            <p class="parcelamento">ou 1x de R$ 147,50</p>
+                        </div>
+                    </div>
+                    <div class="image-container categoria2">
+                        <div class="item">
+                            <img src="data/img/Design-sem-nome--29-.webp" alt="Produto 2">
+                        </div>
+                        <div class="info">
+                            <p class="nome">---NOME DA PEÇA---</p>
+                            <p class="preco-original">R$ 295,00 <span class="preco-promocional">R$ 147,50</span></p>
+                            <p class="parcelamento">ou 1x de R$ 147,50</p>
+                        </div>
+                    </div>
+                    <div class="image-container categoria2">
+                        <div class="item">
+                            <img src="data/img/0377807-00759-1.webp" alt="Produto 4">
+                        </div>
+                        <div class="info">
+                            <p class="nome">---NOME DA PEÇA---</p>
+                            <p class="preco-original">R$ 295,00 <span class="preco-promocional">R$ 147,50</span></p>
+                            <p class="parcelamento">ou 1x de R$ 147,50</p>
+                        </div>
+                    </div>
+                        <div class="image-container categoria1">
+                            <div class="item">
+                                <img src="data/img/Design-sem-nome--40-.webp" alt="Produto 1">
+                            </div>
+                            <div class="info">
+                                <p class="nome">---NOME DA PEÇA---</p>
+                                <p class="preco-original">R$ 295,00 <span class="preco-promocional">R$ 147,50</span></p>
+                                <p class="parcelamento">ou 1x de R$ 147,50</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section contact">
+                <h4>Contato</h4>
+                <p>
+                    <img src="data/icons/wpp.png" alt="WhatsApp"> (21) 1234-5678
+                </p>
+                <p>Email: contato@mariaclara.com</p>
+            </div>
+            <div class="footer-section location">
+                <h4>Localização</h4>
+                <p>
+                    <img src="data/icons/local.png" alt="Localização"> Rua Exemplo, 123
+                </p>
+                <p>Bairro Exemplo, Cidade, Estado</p>
+            </div>
+            <div class="footer-section social">
+                <h4>Siga-nos</h4>
+                <p>
+                    <a href="#"><img src="data/icons/insta.png" alt="Instagram"></a>
+                    <a href="#"><img src="data/icons/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="data/icons/twitter.png" alt="Twitter"></a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Maria Clara. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    
+    
+    <script src="data/script.js"></script>
+</body>
+</html>
