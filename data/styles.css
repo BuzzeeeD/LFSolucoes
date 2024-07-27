@@ -576,7 +576,7 @@ footer {
     }
     .popup-content {
         padding: 15px; /* Reduz o padding para ajustar o conteúdo */
-        width: calc(60% - 20px); /* Reduz a largura em telas menores */
+        width: calc(80% - 20px); /* Reduz a largura em telas menores */
         margin: 5px; /* Margem menor para evitar overflow */
         top: 50%;
         left: 45%;
