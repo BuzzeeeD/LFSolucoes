@@ -165,7 +165,7 @@ nav ul li a:hover {
 }
 
 #user-menu {
-    display: block ;
+    display: none;
     opacity: 1;
     visibility: visible ;
     top: calc(100% + 15px); /* Desloca o menu para baixo após o elemento pai */
@@ -535,7 +535,7 @@ footer {
 
     .image-container {
         width: 100%; /* Ocupa toda a largura disponível */
-        left: -3%; /* Garante que o dropdown comece do canto esquerdo */
+        left: 0%; /* Garante que o dropdown comece do canto esquerdo */
     }
 
     /* Ajustes para o footer */
@@ -547,10 +547,21 @@ footer {
     /* Ajustes para elementos menores */
     .user-options {
         top: 0; /* Posiciona no topo */
-        left: 65%; /* Remove posicionamento à esquerda */
+        left: 70%; /* Remove posicionamento à esquerda */
         right: 0%; /* Alinha à direita */
         flex-direction: row; /* Alinha os itens em fila */
         justify-content: flex-end;
+    }
+    #user-menu {
+        display: none;
+        opacity: 1;
+        visibility: visible ;
+        top: calc(100% + 15px); /* Desloca o menu para baixo após o elemento pai */
+        z-index: 1000 ; /* Certifique-se de que o menu fique acima de outros elementos */
+        background-color: rgba(128, 128, 128, 0.5); /* Cor de fundo suave */
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        
     }
 
     .user-options button, .cart-button, .social-button {
