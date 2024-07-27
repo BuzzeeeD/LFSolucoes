@@ -102,7 +102,7 @@ header {
 .cart-count {
     position: absolute;
     top: -5px;
-    right: -10px;
+    right: 0px;
     background: var(--color-red);
     color: black;
     border-radius: 50%;
@@ -461,7 +461,7 @@ footer {
     border: none; /* Remove bordas padrão */
     color: var(--color1); /* Cor do texto */
     cursor: pointer; /* Indica interatividade */
-    margin-right: 20px; /* Espaçamento entre os botões */
+    margin-right: 10px; /* Espaçamento entre os botões */
     transition: transform 0.3s ease, opacity 0.3s ease; /* Transição suave para hover */
 }
 
@@ -473,4 +473,100 @@ footer {
 .user-options img {
     width: 24px; /* Tamanho dos ícones */
     height: 24px;
+}
+
+/* Estilos para dispositivos móveis */
+@media only screen and (max-width: 768px) {
+    /* Ajustes para o body */
+    body {
+        font-size: 0.9rem; /* Reduz o tamanho da fonte para telas menores */
+    }
+
+    /* Ajustes para o header */
+    .top-bar {
+        flex-direction: column; /* Organiza os elementos em coluna */
+        align-items: flex-start;
+        padding: 10px 10px;
+    }
+
+    .search-bar {
+        position: static; /* Remove o posicionamento absoluto */
+        width: 45%; /* Ocupa toda a largura disponível */
+        margin: 5px 0;
+    }
+
+    .logo {
+
+        padding: 10px 0; /* Adiciona padding vertical */
+        max-width: 82%; /* Permite que o logo ocupe toda a largura do contêiner */
+    }
+
+    /* Ajustes para nav e dropdowns */
+    nav ul {
+        flex-direction: column; /* Coloca os itens em coluna */
+        gap: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: flex; /* Adiciona flexbox aos itens de lista */
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza verticalmente */
+    }
+    
+    nav ul li a {
+        padding: 5px; /* Ajusta o espaçamento */
+        font-size: 1rem; /* Tamanho da fonte */
+        text-align: center; /* Centraliza o texto */
+        width: 100%; /* Garante que o link ocupe toda a largura do item do menu */
+        display: block; /* Torna o link um elemento de bloco, necessário para text-align funcionar */
+    }
+
+    .dropdown-content {
+        left: 0; /* Garante que o dropdown comece do canto esquerdo */
+        width: 100%; /* Ocupa toda a largura disponível */
+    }
+
+    /* Ajustes para a galeria */
+    .galeria {
+        flex-direction: column; /* Organiza os itens em coluna */
+        gap: 10px; /* Ajusta o espaçamento entre itens */
+    }
+
+    .image-container {
+        width: 100%; /* Ocupa toda a largura disponível */
+        left: -3%; /* Garante que o dropdown comece do canto esquerdo */
+    }
+
+    /* Ajustes para o footer */
+    .footer-container {
+        flex-direction: column; /* Organiza os cards em coluna */
+        gap: 10px;
+    }
+
+    /* Ajustes para elementos menores */
+    .user-options {
+        top: 0; /* Posiciona no topo */
+        left: 65%; /* Remove posicionamento à esquerda */
+        right: 0%; /* Alinha à direita */
+        flex-direction: row; /* Alinha os itens em fila */
+        justify-content: flex-end;
+    }
+
+    .user-options button, .cart-button, .social-button {
+        margin-right: 10px; /* Reduz o espaçamento entre botões */
+    }
+    .popup-content {
+        padding: 15px; /* Reduz o padding para ajustar o conteúdo */
+        width: calc(60% - 20px); /* Reduz a largura em telas menores */
+        margin: 5px; /* Margem menor para evitar overflow */
+        top: 50%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+    }
+
+    .close {
+        font-size: 24px; /* Tamanho de fonte reduzido para o botão de fechar */
+    }
+
 }
