@@ -579,7 +579,7 @@ footer {
         width: calc(80% - 20px); /* Reduz a largura em telas menores */
         margin: 5px; /* Margem menor para evitar overflow */
         top: 50%;
-        left: 45%;
+        left: 50%;
         transform: translate(-50%, -50%);
     }
 
