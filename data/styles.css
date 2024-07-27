@@ -77,22 +77,22 @@ header {
 .search-bar button img:hover {
     transform: scale(1.1); /* Animação suave ao passar o mouse */
 }
+
 .logo {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 0px 0;
-    margin: 0 50px; /* Margem para espaçamento lateral */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    width: 100%; /* Ocupa toda a largura disponível */
+    padding: 0; /* Remove qualquer padding adicional */
+    margin: 0; /* Remove margens adicionais */
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
 }
 
-.logo h1 {
-    margin: 0;
-    font-size: 5rem; /* Ajuste o tamanho da fonte conforme necessário */
-    font-family: var(--font-feminine);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    color: var(--color3);
-    
+.logo img, .logo h1 {
+    margin: 0 auto; /* Centraliza o conteúdo dentro do contêiner */
+    display: block; /* Garante que o conteúdo seja tratado como bloco */
+    max-width: 100%; /* Garante que o conteúdo não exceda a largura do contêiner */
+    text-align: center; /* Centraliza o texto no contêiner */
 }
 
 .cart-button {
@@ -494,13 +494,20 @@ footer {
         width: 45%; /* Ocupa toda a largura disponível */
         margin: 5px 0;
     }
-
     .logo {
-
         padding: 10px 0; /* Adiciona padding vertical */
-        max-width: 82%; /* Permite que o logo ocupe toda a largura do contêiner */
+        width: 100%; /* Garante que o logo ocupe toda a largura disponível */
+        max-width: 100%; /* Limita a largura máxima do logo */
+        margin: 0 auto; /* Centraliza o contêiner */
+        box-sizing: border-box; /* Inclui padding e borda na largura total */
     }
 
+    .logo img, .logo h1 {
+        margin: 0 auto; /* Centraliza o conteúdo dentro do contêiner */
+        display: block; /* Garante que o conteúdo seja tratado como bloco */
+        max-width: 100%; /* Garante que o conteúdo não exceda a largura do contêiner */
+        text-align: center; /* Centraliza o texto */
+    }
     /* Ajustes para nav e dropdowns */
     nav ul {
         flex-direction: column; /* Coloca os itens em coluna */
