@@ -132,6 +132,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sortButton) {
         sortButton.addEventListener('click', sortByDate);
     }
+
+    // Função para alternar a visibilidade do menu de usuário
+    function toggleUserMenu(event) {
+        event.stopPropagation();
+        var userMenu = document.getElementById('user-menu');
+        if (userMenu) {
+            userMenu.style.display = userMenu.style.display === 'block' ? 'none' : 'block';
+        }
+    }
+
+    // Fecha o menu de usuário se clicar fora
+    document.addEventListener('click', function(event) {
+        var userMenu = document.getElementById('user-menu');
+        var profileButton = document.getElementById('profile-button');
+        if (userMenu && profileButton) {
+            if (!userMenu.contains(event.target) && event.target !== profileButton) {
+                userMenu.style.display = 'none';
+            }
+        }
+    });
+
+    // Adiciona o evento de clique ao botão de perfil para abrir/fechar o menu de usuário
+    var profileButton = document.getElementById('profile-button');
+    if (profileButton) {
+        profileButton.addEventListener('click', toggleUserMenu);
+    }
 });
 
 // Função para abrir o popup
