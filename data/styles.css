@@ -7,6 +7,7 @@
     --color-red: #FF0000; /* Cor de alerta ou ênfase */
     --font-primary: 'Montserrat', sans-serif; /* Fonte primária, para textos */
     --font-secondary: 'Cinzel', serif; /* Fonte secundária, para títulos e cabeçalhos */
+    --font-terceira: 'Arial', cursive; /* Fonte secundária, para títulos e cabeçalhos */
     --font-feminine: 'Brush Script MT', cursive; /* Fonte decorativa, para elementos femininos ou decorativos */
 
     
@@ -15,7 +16,7 @@ body {
     background-color: var(--color5);
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+
     color: #333;
 }
 
@@ -250,14 +251,15 @@ main {
 .galeria-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-around;
+    gap: 20px; /* Espaçamento entre as linhas e colunas */
+    justify-content: space-between; /* Distribui os itens igualmente */
 }
 
 .image-container {
-    flex: 0 0 calc(25% - 20px); /* Define a largura para 4 itens por linha */
+    flex: 0 0 calc(25% - 25px); /* 25% para quatro itens, menos margens */
     box-sizing: border-box;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+    margin-right: 0.1px; /* Espaçamento entre itens */
     position: relative;
     overflow: hidden;
     border-radius: 8px;
@@ -275,7 +277,6 @@ main {
     transform: translateY(-10px);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
-
 .galeria .item {
     background-color: var(--color4);
     padding: 15px;
@@ -293,8 +294,9 @@ main {
 .info {
     text-align: center;
     padding: 10px;
-    font-size: 0.9rem; /* Tamanho da fonte reduzido */
-    line-height: 1.4; /* Ajusta o espaçamento entre linhas */
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 0.8rem; /* Tamanho da fonte reduzido */
+    line-height: 0.5; /* Ajusta o espaçamento entre linhas */
 }
 
 .info .nome {
@@ -392,27 +394,104 @@ footer {
     backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
 }
 
-/* Estilo para o conteúdo do popup */
+/* Estilo para o conteúdo principal do popup */
 .popup-content {
-    background-color: var(--color4); /* Cor de fundo do popup */
-    margin: auto; /* Centraliza horizontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color4);
+    margin: auto;
     padding: 20px;
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra para profundidade */
-    width: 80%;
-    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 800px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Centraliza o elemento na tela */
-    color: var(--color1); /* Cor do texto */
-    font-family: var(--font-secondary); /* Fonte */
+    transform: translate(-50%, -50%);
+    color: var(--color1);
+    font-family: var(--font-secondary);
+    text-align: center;
+}
+
+.popup-images-container {
+    margin-bottom: 20px;
+}
+
+.popup-main-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.popup-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 60px;
+    height: auto;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo para o contêiner de informações do produto */
+.popup-info-container {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+    text-align: left;
+    overflow: hidden; /* Garante que o conteúdo não ultrapasse o contêiner */
+}
+
+.popup-details {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: bold;
+    background-color: var(--color3); /* Fundo suave */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.popup-details p {
+    margin: 5px 0;
+}
+
+.popup-description-container {
+    background-color: var(--color3); /* Fundo suave */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popup-description-container h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.popup-description {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.4;
 }
 
 /* Botão de fechar o popup */
 .close {
-    color: var(--color2);
-    float: right;
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -420,7 +499,7 @@ footer {
 
 .close:hover,
 .close:focus {
-    color: var(--color-red);
+    color: #333;
     text-decoration: none;
 }
 /* Estilo para os ícones dentro do popup de contato */
@@ -475,6 +554,66 @@ footer {
 .user-options img {
     width: 24px; /* Tamanho dos ícones */
     height: 24px;
+}
+
+/* Estilo para o fundo do popup */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+    backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+}
+
+
+/* Estilo para o conteúdo principal do popup */
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff; /* Fundo branco */
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 100%;
+    height: 106%;
+    max-width: 600px;
+    max-height: 120%; /* Limita a altura máxima a 80% da tela */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333; /* Cor do texto */
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.popup-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.close {
+    color: var(--color2);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--color-red);
+    text-decoration: none;
 }
 
 /* Estilos para dispositivos móveis */
@@ -539,13 +678,25 @@ footer {
     /* Ajustes para a galeria */
     .galeria {
         flex-direction: column; /* Organiza os itens em coluna */
-        gap: 10px; /* Ajusta o espaçamento entre itens */
+    }
+    .galeria-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0px;
+        justify-content: space-around;
     }
 
-    .image-container {
-        width: 100%; /* Ocupa toda a largura disponível */
-        left: 0%; /* Garante que o dropdown comece do canto esquerdo */
-    }
+ 
+.image-container {
+    flex: 0 0 calc(25% - 5px); /* Define a largura para 4 itens por linha */
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 
     /* Ajustes para o footer */
     .footer-container {
