@@ -742,7 +742,7 @@ footer {
         overflow-y: auto; /* Permite rolagem vertical se necessário */
         margin: 0 auto;
         border-radius: 8px;
-        background-color: #1d0303;
+        background-color: #fff;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         position: fixed;
         top: 50%;
@@ -804,7 +804,7 @@ footer {
         border-radius: 8px;
         background-color: var(--color3);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        position: fixed;
+        position: absolute;
         top: 127%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -813,6 +813,8 @@ footer {
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        z-index: 1000; /* Certifique-se de que o elemento está na frente */
+
     }
     .close {
         font-size: 24px; /* Tamanho de fonte reduzido para o botão de fechar */
