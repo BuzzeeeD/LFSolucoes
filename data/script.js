@@ -49,40 +49,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Função para preencher os filtros de categoria e catálogo
-    function populateFilters(products) {
-        const categories = new Set();
-        const catalogos = new Set();
-        
-        products.forEach(product => {
-            if (product.Categoria) categories.add(product.Categoria);
-            if (product.Catalogo) catalogos.add(product.Catalogo);
+// Função para preencher os filtros de categoria e catálogo
+function populateFilters(products) {
+    const categories = new Set();
+    const catalogos = new Set();
+    
+    products.forEach(product => {
+        if (product.Categoria) categories.add(product.Categoria);
+        if (product.Catalogo) catalogos.add(product.Catalogo);
+    });
+
+    const categorySelect = document.getElementById('categorySelect');
+    if (categorySelect) {
+        // Adiciona a opção "Todos" ao início do seletor de categorias
+        const allOption = document.createElement('option');
+        allOption.value = 'todos';
+        allOption.textContent = 'Todos';
+        categorySelect.appendChild(allOption);
+
+        // Adiciona as demais categorias
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category;
+            option.textContent = category;
+            categorySelect.appendChild(option);
         });
-
-        const categorySelect = document.getElementById('categorySelect');
-        if (categorySelect) {
-            categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category;
-                option.textContent = category;
-                categorySelect.appendChild(option);
-            });
-        } else {
-            console.error('Elemento de seleção #categorySelect não encontrado.');
-        }
-
-        const catalogoSelect = document.getElementById('catalogoSelect');
-        if (catalogoSelect) {
-            catalogos.forEach(catalogo => {
-                const option = document.createElement('option');
-                option.value = catalogo;
-                option.textContent = catalogo;
-                catalogoSelect.appendChild(option);
-            });
-        } else {
-            console.error('Elemento de seleção #catalogoSelect não encontrado.');
-        }
+    } else {
+        console.error('Elemento de seleção #categorySelect não encontrado.');
     }
+
+    const catalogoSelect = document.getElementById('catalogoSelect');
+    if (catalogoSelect) {
+        // Adiciona a opção "Todos" ao início do seletor de catálogos, se não existir
+        if (!catalogoSelect.querySelector('option[value="todos"]')) {
+            const allOption = document.createElement('option');
+            allOption.value = 'todos';
+            allOption.textContent = 'Todos';
+            catalogoSelect.appendChild(allOption);
+        }
+
+        // Adiciona os demais catálogos
+        catalogos.forEach(catalogo => {
+            const option = document.createElement('option');
+            option.value = catalogo;
+            option.textContent = catalogo;
+            catalogoSelect.appendChild(option);
+        });
+    } else {
+        console.error('Elemento de seleção #catalogoSelect não encontrado.');
+    }
+}
 
     // Função para filtrar itens na galeria com base na categoria e catálogo
     window.filterItems = function() {
@@ -105,41 +121,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Variável para rastrear a ordem de classificação
+    let isDescending = true;
+
     // Função para ordenar produtos por data de inclusão
     window.sortByDate = function() {
         const galeriaContainer = document.querySelector('.galeria-container');
+        if (!galeriaContainer) {
+            console.error('Elemento .galeria-container não encontrado.');
+            return;
+        }
+
         const items = Array.from(galeriaContainer.getElementsByClassName('image-container'));
 
+        // Verificação se os itens têm o atributo data-date
+        items.forEach(item => {
+            if (!item.getAttribute('data-date')) {
+                console.warn('Elemento sem data encontrada:', item);
+            }
+        });
+
+        // Ordena os itens com base na data
         items.sort((a, b) => {
             const dateA = new Date(a.getAttribute('data-date'));
             const dateB = new Date(b.getAttribute('data-date'));
-            return dateB - dateA;
+            return isDescending ? dateB - dateA : dateA - dateB;
         });
 
+        // Re-adiciona os itens ordenados à galeria
         items.forEach(item => galeriaContainer.appendChild(item));
+
+        // Alterna a ordem de classificação para a próxima chamada
+        isDescending = !isDescending;
     }
 
-    const categorySelect = document.getElementById('categorySelect');
-    if (categorySelect) {
-        categorySelect.addEventListener('change', filterItems);
-    }
-
-    const catalogoSelect = document.getElementById('catalogoSelect');
-    if (catalogoSelect) {
-        catalogoSelect.addEventListener('change', filterItems);
-    }
-
-    const sortButton = document.querySelector('.filter-container button');
-    if (sortButton) {
-        sortButton.addEventListener('click', sortByDate);
-    }
-
-    // Função para alternar a visibilidade do menu de usuário
+    // Função para abrir/fechar o menu de usuário
     function toggleUserMenu(event) {
-        event.stopPropagation();
+        event.stopPropagation(); // Evita o fechamento do menu ao clicar dentro dele
         var userMenu = document.getElementById('user-menu');
         if (userMenu) {
+            // Alterna entre mostrar e esconder o menu
             userMenu.style.display = userMenu.style.display === 'block' ? 'none' : 'block';
+        } else {
+            console.error('Menu de usuário não encontrado.');
         }
     }
 
@@ -158,6 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
     var profileButton = document.getElementById('profile-button');
     if (profileButton) {
         profileButton.addEventListener('click', toggleUserMenu);
+    } else {
+        console.error('Botão de perfil não encontrado.');
     }
 });
 
@@ -196,17 +222,31 @@ function addClickEventsToProducts(products) {
 // Função para exibir o popup com as informações do produto
 function showProductDetails(product) {
     const popup = document.getElementById('productPopup');
-    popup.querySelector('.popup-title').textContent = product.Produto;
-    popup.querySelector('.popup-category').textContent = `Categoria: ${product.Categoria}`;
-    popup.querySelector('.popup-catalogo').textContent = `Catálogo: ${product.Catalogo}`;
-    popup.querySelector('.popup-price').textContent = `Preço: R$ ${product.Valor.toFixed(2)}`;
-    popup.querySelector('.popup-discount').textContent = `Desconto: ${(product.Desconto * 100).toFixed(0)}%`;
-    popup.querySelector('.popup-description').textContent = product.Descrição || 'Descrição não disponível.';
+    
+    // Verifique se o popup existe antes de prosseguir
+    if (!popup) {
+        console.error('Popup de produto não encontrado.');
+        return;
+    }
 
-    // Adicionar imagens adicionais
+    const title = popup.querySelector('.popup-title');
+    const category = popup.querySelector('.popup-category');
+    const catalogo = popup.querySelector('.popup-catalogo');
+    const price = popup.querySelector('.popup-price');
+    const discount = popup.querySelector('.popup-discount');
+    const description = popup.querySelector('.popup-description');
     const mainImage = popup.querySelector('.popup-main-image');
     const thumbnailContainer = popup.querySelector('.popup-thumbnails');
     
+    // Verifica se os elementos existem antes de definir suas propriedades
+    if (title) title.textContent = product.Produto;
+    if (category) category.textContent = `Categoria: ${product.Categoria}`;
+    if (catalogo) catalogo.textContent = `Catálogo: ${product.Catalogo}`;
+    if (price) price.textContent = `Preço: R$ ${product.Valor.toFixed(2)}`;
+    if (discount) discount.textContent = `Desconto: ${(product.Desconto * 100).toFixed(0)}%`;
+    if (description) description.textContent = product.Descrição || 'Descrição não disponível.';
+
+    // Adicionar imagens adicionais se os elementos existirem
     if (mainImage && thumbnailContainer) {
         mainImage.src = ''; // Limpa a imagem principal anterior
         thumbnailContainer.innerHTML = ''; // Limpa as miniaturas anteriores
