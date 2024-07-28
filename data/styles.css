@@ -600,6 +600,7 @@ footer {
 }
 
 /* Estilos para dispositivos móveis */
+/* Estilos para dispositivos móveis */
 @media only screen and (max-width: 768px) {
     /* Ajustes para o body */
     body {
@@ -615,9 +616,10 @@ footer {
 
     .search-bar {
         position: static; /* Remove o posicionamento absoluto */
-        width: 45%; /* Ocupa toda a largura disponível */
+        width: 100%; /* Ocupa toda a largura disponível */
         margin: 5px 0;
     }
+    
     .logo {
         padding: 10px 0; /* Adiciona padding vertical */
         width: 100%; /* Garante que o logo ocupe toda a largura disponível */
@@ -632,6 +634,7 @@ footer {
         max-width: 100%; /* Garante que o conteúdo não exceda a largura do contêiner */
         text-align: center; /* Centraliza o texto */
     }
+
     /* Ajustes para nav e dropdowns */
     nav ul {
         flex-direction: column; /* Coloca os itens em coluna */
@@ -662,24 +665,23 @@ footer {
     .galeria {
         flex-direction: column; /* Organiza os itens em coluna */
     }
+    
     .galeria-container {
         display: flex;
         flex-wrap: wrap;
         gap: 0px;
         justify-content: space-around;
     }
-
  
-.image-container {
-    flex: 0 0 calc(25% - 5px); /* Define a largura para 4 itens por linha */
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
+    .image-container {
+        flex: 0 0 calc(50% - 5px); /* Define a largura para 2 itens por linha */
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
     /* Ajustes para o footer */
     .footer-container {
@@ -690,38 +692,65 @@ footer {
     /* Ajustes para elementos menores */
     .user-options {
         top: 0; /* Posiciona no topo */
-        left: 70%; /* Remove posicionamento à esquerda */
-        right: 0%; /* Alinha à direita */
+        left: auto; /* Remove posicionamento à esquerda */
+        right: 0; /* Alinha à direita */
         flex-direction: row; /* Alinha os itens em fila */
         justify-content: flex-end;
     }
+    
     #user-menu {
         display: none;
         opacity: 1;
-        visibility: visible ;
+        visibility: visible;
         top: calc(100% + 15px); /* Desloca o menu para baixo após o elemento pai */
-        z-index: 1000 ; /* Certifique-se de que o menu fique acima de outros elementos */
+        z-index: 1000; /* Certifique-se de que o menu fique acima de outros elementos */
         background-color: rgba(128, 128, 128, 0.5); /* Cor de fundo suave */
         transform: translateY(-10px);
         transition: opacity 0.3s ease, transform 0.3s ease;
-        
     }
 
     .user-options button, .cart-button, .social-button {
         margin-right: 10px; /* Reduz o espaçamento entre botões */
     }
+
     .popup-content {
-        padding: 15px; /* Reduz o padding para ajustar o conteúdo */
-        width: calc(80% - 20px); /* Reduz a largura em telas menores */
-        margin: 5px; /* Margem menor para evitar overflow */
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        padding: 15px;
+        width: 90%; /* Largura ajustável */
+        max-width: 600px; /* Largura máxima do popup */
+        min-width: 300px; /* Largura mínima */
+        max-height: 150vh; /* Limita a altura do popup a 80% da altura da viewport */
+        overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+        margin: 0 auto; /* Centraliza o popup */
+        border-radius: 8px; /* Bordas arredondadas */
+        background-color: #fff; /* Fundo branco */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
+        position: relative; /* Posicionamento relativo */
+    }
+
+    .popup-content .content {
+        max-height: calc(80vh - 30px); /* Garante que o conteúdo interno use o espaço disponível */
+        overflow-y: auto; /* Adiciona rolagem se necessário */
+    }
+
+    .popup-content img {
+        max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+        height: auto; /* Ajusta a altura automaticamente */
+    }
+
+    .popup-content .description {
+        margin-top: 10px; /* Espaçamento acima da descrição */
+        font-size: 1rem; /* Tamanho da fonte */
+        line-height: 1.4; /* Espaçamento entre linhas */
     }
 
     .close {
-        font-size: 24px; /* Tamanho de fonte reduzido para o botão de fechar */
+        font-size: 24px; /* Tamanho do botão de fechar */
+        position: absolute; /* Posicionamento absoluto */
+        top: 10px; /* Posição do topo */
+        right: 10px; /* Posição da direita */
+        cursor: pointer; /* Cursor de ponteiro */
     }
+
     .filter-container {
         margin-bottom: 10px;
         display: flex;
@@ -745,5 +774,4 @@ footer {
         outline: none;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     }
-
 }
