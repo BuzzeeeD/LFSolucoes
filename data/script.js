@@ -1,55 +1,139 @@
-// Filtra itens na galeria com base na categoria
-function filterItems(category) {
-    let items = document.querySelectorAll('.galeria .image-container');
-    items.forEach(item => {
-        if (category === 'todos' || item.classList.contains(category)) {
-            item.style.display = 'block';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Função para alternar a visibilidade do menu de usuário
-    function toggleUserMenu(event) {
-        event.stopPropagation(); // Previne que o evento se propague para outros elementos
-        var userMenu = document.getElementById('user-menu');
-        userMenu.style.display = userMenu.style.display === 'block' ? 'none' : 'block';
+    const planilhaUrl = 'data/data.xlsx';
+
+    // Carregar a planilha automaticamente
+    fetch(planilhaUrl)
+        .then(response => response.arrayBuffer())
+        .then(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const products = XLSX.utils.sheet_to_json(sheet);
+            
+            // Exibe os produtos e popula os filtros
+            displayProducts(products);
+            populateFilters(products);
+        })
+        .catch(error => console.error('Erro ao carregar a planilha:', error));
+
+    // Função para exibir produtos na galeria
+    function displayProducts(products) {
+        const galeriaContainer = document.querySelector('.galeria-container');
+        
+        if (!galeriaContainer) {
+            console.error('Elemento .galeria-container não encontrado no DOM.');
+            return;
+        }
+
+        galeriaContainer.innerHTML = ''; // Limpa o conteúdo atual
+    
+        products.forEach(product => {
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('image-container');
+            itemDiv.setAttribute('data-date', product['Data Inclusão']); // Atributo data-date para ordenação por data
+            itemDiv.innerHTML = `
+                <div class="item">
+                    <img src="${product.Imagem}" alt="${product.Produto}">
+                </div>
+                <div class="info">
+                    <p class="nome">${product.Produto}</p>
+                    <p class="categoria">${product.Categoria}</p>
+                    <p class="catalogo">${product.Catalogo}</p>
+                    <p class="preco-original">R$ ${product.Valor.toFixed(2)}</p>
+                    <p class="preco-promocional">R$ ${(product.Valor * (1 - product.Desconto)).toFixed(2)}</p>
+                    <p class="parcelamento">ou em até 3x de R$ ${(product.Valor / 3).toFixed(2)}</p>
+                </div>
+            `;
+            galeriaContainer.appendChild(itemDiv);
+        });
     }
 
-    // Função para fechar menus quando clicar fora deles
-    function closeMenus(event) {
-        var userMenu = document.getElementById('user-menu');
-        var dropdowns = document.querySelectorAll('.dropdown-content');
+    // Função para preencher os filtros de categoria e catálogo
+    function populateFilters(products) {
+        const categories = new Set();
+        const catalogos = new Set();
+        
+        products.forEach(product => {
+            if (product.Categoria) categories.add(product.Categoria);
+            if (product.Catalogo) catalogos.add(product.Catalogo);
+        });
 
-        // Fecha o menu de usuário se o clique não for nele ou no botão de perfil
-        if (!userMenu.contains(event.target) && event.target.id !== 'profile-button') {
-            userMenu.style.display = 'none';
+        const categorySelect = document.getElementById('categorySelect');
+        if (categorySelect) {
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categorySelect.appendChild(option);
+            });
+        } else {
+            console.error('Elemento de seleção #categorySelect não encontrado.');
         }
 
-        // Fecha menus de produtos se o clique não for neles ou em seus acionadores
-        dropdowns.forEach(menu => {
-            if (!menu.contains(event.target) && !menu.parentElement.contains(event.target)) {
-                menu.style.display = 'none';
+        const catalogoSelect = document.getElementById('catalogoSelect');
+        if (catalogoSelect) {
+            catalogos.forEach(catalogo => {
+                const option = document.createElement('option');
+                option.value = catalogo;
+                option.textContent = catalogo;
+                catalogoSelect.appendChild(option);
+            });
+        } else {
+            console.error('Elemento de seleção #catalogoSelect não encontrado.');
+        }
+    }
+
+    // Função para filtrar itens na galeria com base na categoria e catálogo
+    window.filterItems = function() {
+        const selectedCategory = document.getElementById('categorySelect').value;
+        const selectedCatalogo = document.getElementById('catalogoSelect').value;
+        const items = document.querySelectorAll('.galeria-container .image-container');
+
+        items.forEach(item => {
+            const itemCategory = item.querySelector('.categoria').textContent;
+            const itemCatalogo = item.querySelector('.catalogo').textContent;
+
+            const categoryMatch = selectedCategory === 'todos' || itemCategory === selectedCategory;
+            const catalogoMatch = selectedCatalogo === 'todos' || itemCatalogo === selectedCatalogo;
+
+            if (categoryMatch && catalogoMatch) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
             }
         });
     }
 
-    // Ativa o menu de usuário quando o botão é clicado
-    document.getElementById('profile-button').addEventListener('click', toggleUserMenu);
-    // Fecha menus quando clicar em qualquer lugar fora deles
-    document.addEventListener('click', closeMenus);
+    // Função para ordenar produtos por data de inclusão
+    window.sortByDate = function() {
+        const galeriaContainer = document.querySelector('.galeria-container');
+        const items = Array.from(galeriaContainer.getElementsByClassName('image-container'));
 
-    // Abre/fecha menus de produtos
-    document.querySelectorAll('.dropdown > a').forEach(toggle => {
-        toggle.addEventListener('click', function(event) {
-            event.stopPropagation(); // Previne que o evento se propague para o documento
-            var dropdownMenu = this.nextElementSibling;
-            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        items.sort((a, b) => {
+            const dateA = new Date(a.getAttribute('data-date'));
+            const dateB = new Date(b.getAttribute('data-date'));
+            return dateB - dateA;
         });
-    });
+
+        items.forEach(item => galeriaContainer.appendChild(item));
+    }
+
+    const categorySelect = document.getElementById('categorySelect');
+    if (categorySelect) {
+        categorySelect.addEventListener('change', filterItems);
+    }
+
+    const catalogoSelect = document.getElementById('catalogoSelect');
+    if (catalogoSelect) {
+        catalogoSelect.addEventListener('change', filterItems);
+    }
+
+    const sortButton = document.querySelector('.filter-container button');
+    if (sortButton) {
+        sortButton.addEventListener('click', sortByDate);
+    }
 });
+
 // Função para abrir o popup
 function openPopup(popupId) {
     document.getElementById(popupId).style.display = "block";
