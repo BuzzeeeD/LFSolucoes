@@ -426,32 +426,59 @@ footer {
 
 /* Estilo para o contêiner de informações do produto */
 .popup-info-container {
-    width: 100%;
-    max-width: 800px;
-    margin-top: 20px;
-    text-align: left;
-    overflow: hidden; /* Garante que o conteúdo não ultrapasse o contêiner */
+    padding: 10px;
+    width: 75%;
+    max-width: 450px;
+    height: 0;
+    max-height: 0;
+    margin-top: -5px;
+    text-align: justify;
+    overflow: visible; /* Garante que o conteúdo não ultrapasse o contêiner */
 }
+
 
 .popup-details {
-    margin-bottom: 20px;
-    font-size: 1rem;
-    line-height: 1.6;
-    font-weight: bold;
-    background-color: var(--color3); /* Fundo suave */
     padding: 10px;
-    border-radius: 8px;
-}
-
-.popup-details p {
-    margin: 5px 0;
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    max-height: 20vh;
+    overflow-y: visible;
+    margin: 0px auto;
+    border-radius: 10px;
+    background-color: var(--color3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 106%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
 }
 
 .popup-description-container {
-    background-color: var(--color3); /* Fundo suave */
-    padding: 15px;
+    padding: 10px;
+    width: 96%;
+    max-width: 550px;
+    height: auto;
+    max-height: 20vh;
+    overflow-y: visible;
+    margin: 0px auto;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--color3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 125%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .popup-description-container h3 {
@@ -460,10 +487,10 @@ footer {
 }
 
 .popup-description {
-    margin-top: 10px;
+    margin-top: -15px;
     font-size: 1rem;
     color: #666;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 /* Botão de fechar o popup */
@@ -551,39 +578,35 @@ footer {
 }
 
 
-/* Estilo para o conteúdo principal do popup */
+/* Configuração do container do popup */
 .popup-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff; /* Fundo branco */
-    margin: auto;
     padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    max-width: 600px; /* Limita a largura máxima */
-    max-height: 80%; /* Limita a altura máxima */
-    min-width: 300px; /* Define a largura mínima */
-    min-height: 150px; /* Define a altura mínima */
-    width: auto; /* Permite ajuste automático da largura */
-    height: auto; /* Permite ajuste automático da altura */
-    position: absolute;
+    width: 90%;
+    max-width: 600px;
+    max-height: calc(100vh - 20px); /* Limita a altura do popup à altura da viewport menos margens */
+    overflow-y: auto; /* Garante rolagem se necessário */
+    margin: 0 auto;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #333; /* Cor do texto */
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.popup-image {
-    width: 100%;
-    max-width: 500px;
+/* Ajuste para imagens dentro do popup */
+.popup-content img {
+    max-width: 100%;
     height: auto;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
+
 
 .close {
     color: var(--color2);
@@ -600,7 +623,6 @@ footer {
 }
 
 /* Estilos para dispositivos móveis */
-/* Estilos para dispositivos móveis */
 @media only screen and (max-width: 768px) {
     /* Ajustes para o body */
     body {
@@ -616,10 +638,9 @@ footer {
 
     .search-bar {
         position: static; /* Remove o posicionamento absoluto */
-        width: 100%; /* Ocupa toda a largura disponível */
+        width: 45%; /* Ocupa toda a largura disponível */
         margin: 5px 0;
     }
-    
     .logo {
         padding: 10px 0; /* Adiciona padding vertical */
         width: 100%; /* Garante que o logo ocupe toda a largura disponível */
@@ -634,7 +655,6 @@ footer {
         max-width: 100%; /* Garante que o conteúdo não exceda a largura do contêiner */
         text-align: center; /* Centraliza o texto */
     }
-
     /* Ajustes para nav e dropdowns */
     nav ul {
         flex-direction: column; /* Coloca os itens em coluna */
@@ -665,23 +685,24 @@ footer {
     .galeria {
         flex-direction: column; /* Organiza os itens em coluna */
     }
-    
     .galeria-container {
         display: flex;
         flex-wrap: wrap;
         gap: 0px;
         justify-content: space-around;
     }
+
  
-    .image-container {
-        flex: 0 0 calc(50% - 5px); /* Define a largura para 2 itens por linha */
-        box-sizing: border-box;
-        margin-bottom: 20px;
-        position: relative;
-        overflow: hidden;
-        border-radius: 8px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.image-container {
+    flex: 0 0 calc(25% - 5px); /* Define a largura para 4 itens por linha */
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 
     /* Ajustes para o footer */
     .footer-container {
@@ -692,65 +713,101 @@ footer {
     /* Ajustes para elementos menores */
     .user-options {
         top: 0; /* Posiciona no topo */
-        left: auto; /* Remove posicionamento à esquerda */
-        right: 0; /* Alinha à direita */
+        left: 70%; /* Remove posicionamento à esquerda */
+        right: 0%; /* Alinha à direita */
         flex-direction: row; /* Alinha os itens em fila */
         justify-content: flex-end;
     }
-    
     #user-menu {
         display: none;
         opacity: 1;
-        visibility: visible;
+        visibility: visible ;
         top: calc(100% + 15px); /* Desloca o menu para baixo após o elemento pai */
-        z-index: 1000; /* Certifique-se de que o menu fique acima de outros elementos */
+        z-index: 1000 ; /* Certifique-se de que o menu fique acima de outros elementos */
         background-color: rgba(128, 128, 128, 0.5); /* Cor de fundo suave */
         transform: translateY(-10px);
         transition: opacity 0.3s ease, transform 0.3s ease;
+        
     }
 
     .user-options button, .cart-button, .social-button {
         margin-right: 10px; /* Reduz o espaçamento entre botões */
     }
-
     .popup-content {
-        padding: 15px;
-        width: 90%; /* Largura ajustável */
-        max-width: 600px; /* Largura máxima do popup */
-        min-width: 300px; /* Largura mínima */
-        max-height: 150vh; /* Limita a altura do popup a 80% da altura da viewport */
-        overflow-y: auto; /* Adiciona rolagem vertical se necessário */
-        margin: 0 auto; /* Centraliza o popup */
-        border-radius: 8px; /* Bordas arredondadas */
-        background-color: #fff; /* Fundo branco */
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
-        position: relative; /* Posicionamento relativo */
+        padding: 10px;
+        width: 90%;
+        max-width: 600px;
+        height: auto;
+        max-height: 90vh; /* Limita a altura do popup a 90% da altura da viewport */
+        overflow-y: auto; /* Permite rolagem vertical se necessário */
+        margin: 0 auto;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
-
-    .popup-content .content {
-        max-height: calc(80vh - 30px); /* Garante que o conteúdo interno use o espaço disponível */
-        overflow-y: auto; /* Adiciona rolagem se necessário */
-    }
-
+    
     .popup-content img {
-        max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
-        height: auto; /* Ajusta a altura automaticamente */
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
     }
-
-    .popup-content .description {
-        margin-top: 10px; /* Espaçamento acima da descrição */
-        font-size: 1rem; /* Tamanho da fonte */
-        line-height: 1.4; /* Espaçamento entre linhas */
+    
+    .popup-details {
+        padding: 10px;
+        width: 100%;
+        max-width: 390px;
+        height: auto;
+        max-height: 9vh;
+        overflow-y: visible;
+        margin: 0px auto;
+        border-radius: 10px;
+        background-color: var(--color3);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 103%;
+        left: 50%;
+        line-height: 0;
+        transform: translate(-50%, -50%);
+        box-sizing: content-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: baseline;
     }
-
+    
+    .popup-description-container {
+        padding: 10px;
+        width: 96%;
+        max-width: 550px;
+        height: auto;
+        max-height: 20vh;
+        overflow-y: visible;
+        margin: 0px auto;
+        border-radius: 8px;
+        background-color: var(--color3);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 125%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
     .close {
-        font-size: 24px; /* Tamanho do botão de fechar */
-        position: absolute; /* Posicionamento absoluto */
-        top: 10px; /* Posição do topo */
-        right: 10px; /* Posição da direita */
-        cursor: pointer; /* Cursor de ponteiro */
+        font-size: 24px; /* Tamanho de fonte reduzido para o botão de fechar */
     }
-
     .filter-container {
         margin-bottom: 10px;
         display: flex;
@@ -774,4 +831,5 @@ footer {
         outline: none;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     }
+
 }
