@@ -744,7 +744,7 @@ footer {
         border-radius: 8px;
         background-color: #fff;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        position: fixed;
+        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -772,7 +772,7 @@ footer {
         border-radius: 10px;
         background-color: var(--color3);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        position: fixed;
+        position: absolute;
         top: 105%;
         left: 50%;
         line-height: 0;
