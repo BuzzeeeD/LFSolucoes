@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Exibe os produtos e popula os filtros
             displayProducts(products);
             populateFilters(products);
+            addClickEventsToProducts(products);
         })
         .catch(error => console.error('Erro ao carregar a planilha:', error));
 
@@ -167,12 +168,78 @@ function openPopup(popupId) {
 
 // Função para fechar o popup
 function closePopup(popupId) {
-    document.getElementById(popupId).style.display = "none";
+    const popup = document.getElementById(popupId);
+    if (popup) {
+        popup.style.display = 'none';
+    } else {
+        console.error(`Popup com ID ${popupId} não encontrado.`);
+    }
 }
 
 // Fecha o popup se o usuário clicar fora do conteúdo
 window.onclick = function(event) {
-    if (event.target.className === 'popup') {
-        event.target.style.display = "none";
+    if (event.target.classList.contains('popup')) {
+        event.target.style.display = 'none';
     }
+}
+
+// Função para adicionar eventos de clique nos produtos
+function addClickEventsToProducts(products) {
+    const items = document.querySelectorAll('.galeria-container .image-container');
+    items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            showProductDetails(products[index]);
+        });
+    });
+}
+
+// Função para exibir o popup com as informações do produto
+function showProductDetails(product) {
+    const popup = document.getElementById('productPopup');
+    popup.querySelector('.popup-title').textContent = product.Produto;
+    popup.querySelector('.popup-category').textContent = `Categoria: ${product.Categoria}`;
+    popup.querySelector('.popup-catalogo').textContent = `Catálogo: ${product.Catalogo}`;
+    popup.querySelector('.popup-price').textContent = `Preço: R$ ${product.Valor.toFixed(2)}`;
+    popup.querySelector('.popup-discount').textContent = `Desconto: ${(product.Desconto * 100).toFixed(0)}%`;
+    popup.querySelector('.popup-description').textContent = product.Descrição || 'Descrição não disponível.';
+
+    // Adicionar imagens adicionais
+    const mainImage = popup.querySelector('.popup-main-image');
+    const thumbnailContainer = popup.querySelector('.popup-thumbnails');
+    
+    if (mainImage && thumbnailContainer) {
+        mainImage.src = ''; // Limpa a imagem principal anterior
+        thumbnailContainer.innerHTML = ''; // Limpa as miniaturas anteriores
+
+        const images = [
+            product.Imagem,
+            product['Imagem 2'],
+            product['Imagem 3'],
+            product['Imagem 4'],
+            product['Imagem 5']
+        ];
+
+        let firstImageSet = false;
+
+        images.forEach((imageSrc, index) => {
+            if (imageSrc) {
+                // Define a primeira imagem como a principal
+                if (!firstImageSet) {
+                    mainImage.src = imageSrc;
+                    firstImageSet = true;
+                }
+                // Adiciona miniaturas
+                const thumbElement = document.createElement('img');
+                thumbElement.src = imageSrc;
+                thumbElement.alt = `Imagem ${index + 1} de ${product.Produto}`;
+                thumbElement.classList.add('thumbnail');
+                thumbElement.onclick = () => {
+                    mainImage.src = imageSrc;
+                };
+                thumbnailContainer.appendChild(thumbElement);
+            }
+        });
+    }
+
+    popup.style.display = 'block';
 }
