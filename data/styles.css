@@ -248,25 +248,27 @@ main {
 }
 
 .galeria-container {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 20px;
-    background-color: var(--color5);
-}
-
-.galeria {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
+    justify-content: space-around;
 }
 
 .image-container {
-    width: calc(25% - 20px);
+    flex: 0 0 calc(25% - 20px); /* Define a largura para 4 itens por linha */
+    box-sizing: border-box;
+    margin-bottom: 20px;
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
 }
 
 .image-container:hover {
