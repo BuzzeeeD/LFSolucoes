@@ -763,10 +763,10 @@ footer {
     
     .popup-details {
         padding: 10px;
-        width: 90%;
-        max-width: 495px;
+        width: 88%;
+        max-width: 530px;
         height: auto;
-        max-height: 10vh;
+        max-height: 15vh;
         overflow-y: visible;
         margin: -10px auto;
         border-radius: 10px;
@@ -795,17 +795,17 @@ footer {
     }
     .popup-description-container {
         padding: 10px;
-        width: 96%;
+        width: 95%;
         max-width: 550px;
         height: auto;
-        max-height: 20vh;
+        max-height: 25vh;
         overflow-y: visible;
         margin: 0px auto;
         border-radius: 8px;
         background-color: var(--color3);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         position: fixed;
-        top: 125%;
+        top: 127%;
         left: 50%;
         transform: translate(-50%, -50%);
         box-sizing: border-box;
