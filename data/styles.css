@@ -394,26 +394,6 @@ footer {
     backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
 }
 
-/* Estilo para o conteúdo principal do popup */
-.popup-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--color4);
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    width: 90%;
-    max-width: 800px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--color1);
-    font-family: var(--font-secondary);
-    text-align: center;
-}
 
 .popup-images-container {
     margin-bottom: 20px;
@@ -429,11 +409,11 @@ footer {
 .popup-thumbnails {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 .thumbnail {
-    width: 60px;
+    width: 100px;
     height: auto;
     border-radius: 4px;
     cursor: pointer;
@@ -578,13 +558,15 @@ footer {
     align-items: center;
     background-color: #fff; /* Fundo branco */
     margin: auto;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    width: 100%;
-    height: 106%;
-    max-width: 600px;
-    max-height: 120%; /* Limita a altura máxima a 80% da tela */
+    max-width: 600px; /* Limita a largura máxima */
+    max-height: 80%; /* Limita a altura máxima */
+    min-width: 300px; /* Define a largura mínima */
+    min-height: 150px; /* Define a altura mínima */
+    width: auto; /* Permite ajuste automático da largura */
+    height: auto; /* Permite ajuste automático da altura */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -592,6 +574,7 @@ footer {
     color: #333; /* Cor do texto */
     font-family: 'Montserrat', sans-serif;
     text-align: center;
+
 }
 
 .popup-image {
