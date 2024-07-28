@@ -40,7 +40,7 @@
         <nav>
             <ul>
                 <li><a href="#" onclick="openPopup('quemSomosPopup')">Quem Somos</a></li>
-                <li><a href="#" onclick="openPopup('ondeFicamosPopup')">Onde Ficamos</a></li>
+                <li><a href="#" onclick="openPopup('ondeFicamosPopup')">Onde Estamos</a></li>
                 <li class="dropdown">
                     <a href="#">Nossos Produtos</a>
                     <ul class="dropdown-content">
@@ -101,12 +101,36 @@
         </div>
     </div>
 
+    <div id="productPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('productPopup')">&times;</span>
+            <h2 class="popup-title">Nome do Produto</h2>
+            <div class="popup-images-container">
+                <img class="popup-main-image" src="" alt="Imagem do Produto">
+                <div class="popup-thumbnails">
+                    <!-- Miniaturas das imagens serão inseridas aqui -->
+                </div>
+            </div>
+            <div class="popup-info-container">
+                <div class="popup-details">
+                    <p class="popup-category">Categoria: </p>
+                    <p class="popup-catalogo">Catálogo: </p>
+                    <p class="popup-price">Preço: </p>
+                    <p class="popup-discount">Desconto: </p>
+                </div>
+                <div class="popup-description-container">
+                    <h3>Descrição</h3>
+                    <p class="popup-description">Descrição do Produto</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <main>
         <section class="novidades">
             <h2>Novidades</h2>
             <div class="filter-container">
                 <select id="categorySelect" onchange="filterItems()">
-                    <option value="todos">Todos</option>
                     <!-- As opções de categorias serão preenchidas dinamicamente pelo JavaScript -->
                 </select>
                 <select id="catalogoSelect" onchange="filterItems()">
