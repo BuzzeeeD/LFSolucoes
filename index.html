@@ -1,181 +1,208 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maria Clara - E-commerce</title>
-    <link rel="stylesheet" href="data/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-</head>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://cdn-icons-png.flaticon.com/; frame-src https://www.youtube.com/; script-src 'self';">
+        <meta name="description" content="Automatize tarefas repetitivas com Python e economize tempo. Descubra nossas soluções personalizadas para sua empresa!">
+        <title>Automatize Suas Tarefas com Python</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+    </head>
 <body>
-    <div class="fixed-header">
-        <div class="search-bar">
-            <input type="text" placeholder="Buscar...">
-            <button id="search-button">
-                <img src="data/icons/lupa.png" alt="Buscar">
-            </button>
-        </div>
-        <div class="user-options">
-            <button id="profile-button">
-                <img src="data/icons/perfil.png" alt="Perfil">
-            </button>
-            <div id="user-menu" class="dropdown-content">
-                <a href="#">Entrar</a>
-                <a href="#">Cadastrar</a>
-                <a href="#">Meus Pedidos</a>
-                <a href="#">Minha Conta</a>
-            </div>
-            <button class="cart-button">
-                <img src="data/icons/carrinho.png" alt="Carrinho de Compras">
-                <span class="cart-count">0</span>
-            </button>
-        </div>
-    </div>
-    <header>
-        <div class="top-bar">
-            <div class="logo">
-                <img src="logo.png" alt="logo">
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="openPopup('quemSomosPopup')">Quem Somos</a></li>
-                <li><a href="#" onclick="openPopup('ondeFicamosPopup')">Onde Estamos</a></li>
-                <li class="dropdown">
-                    <a href="#">Nossos Produtos</a>
-                    <ul class="dropdown-content">
-                        <li><a href="#">Camisetas</a></li>
-                        <li><a href="#">Macacões</a></li>
-                        <li><a href="#">Vestidos</a></li>
-                        <li><a href="#">Conjuntos</a></li>
-                        <li><a href="#">Ver Todos</a></li>
-                    </ul>
-                </li>
-                <li><a href="#" onclick="openPopup('contatoPopup')">Contato</a></li>
-            </ul>
-        </nav>
+    <header class="hero">
+        <h1>Automatize Tarefas Repetitivas com Nossas Soluções e Ganhe Mais Tempo para Gerenciar o seu Negócio!</h1>
+        <p>Conte-nos o que precisa e nós criaremos uma automação personalizada para facilitar sua vida. Preencha seu e-mail abaixo e solicite seu orçamento agora!</p>
+        <form action="https://formspree.io/f/mkgnzovj" method="POST" class="quote-form">
+            <input type="email" name="email" placeholder="Seu e-mail" required aria-label="Digite seu e-mail">
+            <textarea name="necessidade" placeholder="Descreva sua necessidade" required aria-label="Descreva sua necessidade de automação"></textarea>
+            <button type="submit" role="button">Solicitar Orçamento</button>
+        </form>
     </header>
+
+    <section class="benefits">
+        <div class="benefit">
+            <h2>Economia de Tempo</h2>
+            <p>Reduza o tempo gasto com tarefas manuais repetitivas e se concentre no que realmente importa.</p>
+        </div>
+        <div class="benefit">
+            <h2>Fácil e Prático</h2>
+            <p>Nossas automações são intuitivas e não requerem conhecimento técnico para usar.</p>
+        </div>
+        <div class="benefit">
+            <h2>Personalizado para Você</h2>
+            <p>Projetamos soluções sob medida para atender às suas necessidades específicas.</p>
+        </div>
+    </section>
+    <section class="testimonials">
+        <h2>O Que Nossos Clientes Dizem</h2>
+        <div class="testimonial-grid">
+            <blockquote class="testimonial">
+                <p>"As automações economizaram horas da minha semana! Agora posso focar em outras tarefas enquanto o software realiza o mesmo trabalho de um estagiário."</p>
+                <span class="author">- Carlos Amaral, Advogado</span>
+            </blockquote>
+            <blockquote class="testimonial">
+                <p>"A automação que implementaram transformou completamente nosso fluxo de trabalho. Estamos economizando tempo e evitando erros manuais!"</p>
+                <span class="author">- Maria Fernandes, Gerente de Projetos</span>
+            </blockquote>
+            <blockquote class="testimonial">
+                <p>"Sempre achei que automações fossem complicadas, mas a solução que criaram para mim é super intuitiva. Minha produtividade disparou!"</p>
+                <span class="author">- João Lima, Empreendedor</span>
+            </blockquote>
+            <blockquote class="testimonial">
+                <p>"Eu costumava gastar horas analisando dados, agora tudo é feito automaticamente. É incrível como facilitou minha vida profissional."</p>
+                <span class="author">- Ana Costa, Analista de Dados</span>
+            </blockquote>
+            <blockquote class="testimonial">
+                <p>"A equipe conseguiu otimizar nossa geração de relatórios em tempo recorde. O retorno sobre o investimento foi imediato!"</p>
+                <span class="author">- Roberto Silva, Diretor Financeiro</span>
+            </blockquote>
+            <blockquote class="testimonial">
+                <p>"Recomendo sem hesitar! A solução foi entregue rápida, eficiente e personalizada de acordo com o que eu precisava."</p>
+                <span class="author">- Camila Rodrigues, Proprietária de Pequeno Negócio</span>
+            </blockquote>
+        </div>
+    </section>
+    <section class="use-cases">
+        <div class="container">
+            <h2>Casos de Uso Comuns</h2>
+            <p>Descubra como nossas soluções podem facilitar sua rotina e impulsionar sua produtividade.</p>
+            <div class="use-cases-grid">
+                <div class="use-case">
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="Automação de Planilhas Excel">
+                    </div>
+                    <h3>Automação em Planilhas Excel</h3>
+                    <p>Criação, modificação e atualização automática de planilhas, cálculos complexos e geração de relatórios personalizados.</p>
+                </div>
+                <div class="use-case">
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/256/4726/4726010.png" alt="Manipulação de PDFs">
+                    </div>
+                    <h3>Manipulação de PDFs</h3>
+                    <p>Leitura, Criação e Extração de informações, geração de relatórios e simplificação de trabalho com documentos.</p>
+                </div>
+                <div class="use-case">
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/256/2029/2029841.png" alt="Tarefas Repetitivas">
+                    </div>
+                    <h3>Tarefas Repetitivas</h3>
+                    <p>Automatize tarefas repetitivas envolvendo copiar e colar dados entre sistemas.</p>
+                </div>
+                <div class="use-case">
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/256/11892/11892629.png" alt="Extração de Dados (Web Scraping)">
+                    </div>
+                    <h3>Extração de Dados (Web Scraping)</h3>
+                    <p>Coleta de informações online para relatórios e análises atualizadas.</p>
+                </div>
+                <div class="use-case">
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/256/515/515636.png" alt="Automação de Navegação">
+                    </div>
+                    <h3>Automação de Navegação</h3>
+                    <p>Interação automática com websites para preenchimento de formulários e busca de informações.</p>
+                </div>
+                <div class="use-case">
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/256/9732/9732753.png" alt="Automação de Navegação">
+                    </div>
+                    <h3>Inteligência Artificial</h3>
+                    <p>Implementação de sistemas de inteligência artificial personalizada para o seu negócio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    <!-- Popup "Quem Somos" -->
-    <div id="quemSomosPopup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('quemSomosPopup')">&times;</span>
-            <h2>Quem Somos</h2>
-            <p>Bem-vindo ao nosso site! Somos uma marca dedicada a oferecer produtos de alta qualidade e estilo único. Nossa missão é proporcionar uma experiência de compra excepcional, combinando inovação com tradição.</p>
-            <p>Nosso time é composto por profissionais apaixonados por moda e design, sempre buscando as últimas tendências e tecnologias para oferecer o melhor para nossos clientes.</p>
-        </div>
-    </div>
 
-    <!-- Popup "Onde Ficamos" -->
-    <div id="ondeFicamosPopup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('ondeFicamosPopup')">&times;</span>
-            <h2>Onde Ficamos</h2>
-            <p>Nosso showroom está localizado em:</p>
-            <p><strong>Rua Exemplo, 123</strong></p>
-            <p>Bairro Exemplo, Cidade, Estado</p>
-            <p>Estamos abertos de segunda a sexta, das 9h às 18h. Venha nos visitar e conhecer nossa coleção de perto!</p>
-        </div>
-    </div>
+    <section class="call-to-action">
+        <h2>Vamos Automatizar Seu Trabalho!</h2>
+        <p>Entre em contato e descubra como podemos ajudar você a otimizar seu tempo.</p>
+        <button id="cta-start">Comece Agora!</button>
+    </section>
 
-    <!-- Popup "Contato" -->
-    <div id="contatoPopup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('contatoPopup')">&times;</span>
-            <h2>Contato</h2>
-            <p>Estamos aqui para ajudar! Entre em contato conosco através dos seguintes meios:</p>
-            <div class="contact-item">
-                <img src="data/icons/wpp.png" alt="Telefone" class="contact-icons">
-                <span><strong>Telefone:</strong> (21) 1234-5678</span>
-            </div>
-            <div class="contact-item">
-                <img src="data/icons/email.png" alt="Email" class="contact-icons">
-                <span><strong>Email:</strong> contato@mariaclara.com</span>
-            </div>
-            <p>Você também pode nos seguir nas redes sociais:</p>
-            <div class="contact-item">
-                <a href="#"><img src="data/icons/insta.png" alt="Instagram" class="contact-icons"></a>
-                <a href="#"><img src="data/icons/facebook.png" alt="Facebook" class="contact-icons"></a>
-                <a href="#"><img src="data/icons/twitter.png" alt="Twitter" class="contact-icons"></a>
-            </div>
-        </div>
-    </div>
-
-    <div id="productPopup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('productPopup')">&times;</span>
-            <h2 class="popup-title">Nome do Produto</h2>
-            <div class="popup-images-container">
-                <img class="popup-main-image" src="" alt="Imagem do Produto">
-                <div class="popup-thumbnails">
-                    <!-- Miniaturas das imagens serão inseridas aqui -->
+    <section class="social-proof">
+        <div class="container">
+            <h2>Confiança de Nossos Clientes</h2>
+            <p>Mais de <span class="highlight">50 clientes</span> confiam em nossas automações para economizar tempo e alcançar melhores resultados.</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="number">50+</span>
+                    <span class="description">Clientes Atendidos</span>
                 </div>
-            </div>
-            <div class="popup-info-container">
-                <div class="popup-details">
-                    <p class="popup-category">Categoria: </p>
-                    <p class="popup-catalogo">Catálogo: </p>
-                    <p class="popup-price">Preço: </p>
-                    <p class="popup-discount">Desconto: </p>
+                <div class="stat">
+                    <span class="number">15h</span>
+                    <span class="description">Horas Semanais Economizadas</span>
                 </div>
-                <div class="popup-description-container">
-                    <h3>Descrição</h3>
-                    <p class="popup-description">Descrição do Produto</p>
+                <div class="stat">
+                    <span class="number">95%</span>
+                    <span class="description">Satisfação dos Clientes</span>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <main>
-        <section class="novidades">
-            <h2>Novidades</h2>
-            <div class="filter-container">
-                <select id="categorySelect" onchange="filterItems()">
-                    <!-- As opções de categorias serão preenchidas dinamicamente pelo JavaScript -->
-                </select>
-                <select id="catalogoSelect" onchange="filterItems()">
-                    <option value="todos">Todos</option>
-                    <!-- As opções de catálogos serão preenchidas dinamicamente pelo JavaScript -->
-                </select>
-                <button onclick="sortByDate()">Mais Recentes</button>
-            </div>
-            </div>
-            <div class="galeria-container">
-                <!-- Conteúdo dos produtos será inserido aqui pelo JavaScript -->
-            </div>
-        </section>
-    </main>
+    </section>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section contact">
-                <h4>Contato</h4>
-                <p>
-                    <img src="data/icons/wpp.png" alt="WhatsApp"> (21) 1234-5678
-                </p>
-                <p>Email: contato@mariaclara.com</p>
+    <section class="faq">
+        <div class="container">
+            <h2>Perguntas Frequentes</h2>
+            <div class="faq-item">
+                <h3>Quanto tempo demora para criar uma automação?</h3>
+                <p>O prazo depende da complexidade, mas costumamos entregar soluções simples em poucos dias.</p>
             </div>
-            <div class="footer-section location">
-                <h4>Localização</h4>
-                <p>
-                    <img src="data/icons/local.png" alt="Localização"> Rua Exemplo, 123
-                </p>
-                <p>Bairro Exemplo, Cidade, Estado</p>
+            <div class="faq-item">
+                <h3>As automações são fáceis de usar?</h3>
+                <p>Sim, nossas soluções são criadas para serem simples e intuitivas, mesmo para quem não tem conhecimentos técnicos.</p>
             </div>
-            <div class="footer-section social">
-                <h4>Siga-nos</h4>
-                <p>
-                    <a href="#"><img src="data/icons/insta.png" alt="Instagram"></a>
-                    <a href="#"><img src="data/icons/facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="data/icons/twitter.png" alt="Twitter"></a>
-                </p>
+            <div class="faq-item">
+                <h3>O suporte está incluso no serviço?</h3>
+                <p>Sim, oferecemos suporte completo durante o período de adaptação e ajustes necessários.</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Maria Clara. Todos os direitos reservados.</p>
-        </div>
+    </section>
+
+    <footer class="final-cta">
+        <h2>Pronto para deixar as tarefas repetitivas no passado?</h2>
+        <p>Solicite seu orçamento e veja como podemos ajudar você a ganhar mais tempo livre!</p>
+        <button id="cta-contact">Entre em Contato!</button>
     </footer>
-
-    <script src="data/script.js"></script>
+    <div class="floating-menu">
+        <div class="menu-item" id="chat-icon">
+            <img src="https://cdn-icons-png.flaticon.com/256/684/684856.png" alt="Chat Icon">
+        </div>
+        <div class="menu-item" id="youtube-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube Icon">
+        </div>
+    </div>
+    <div class="popup hidden" id="chat-popup">
+        <span class="close-btn">&times;</span>
+        <h3>Chat</h3>
+        <p>Converse com nossa equipe de suporte para tirar suas dúvidas.</p>
+    </div>
+    
+    <div class="popup hidden" id="youtube-popup">
+        <span class="close-btn">&times;</span>
+        <h3>YouTube</h3>
+        <p>Acompanhe nosso canal no YouTube para mais dicas e tutoriais.</p>
+        <div class="youtube-video">
+            <iframe 
+                id="youtube-iframe"
+                src="https://www.youtube.com/embed/tgbNymZ7vqY" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+    <div class="body-overlay hidden"></div>
+    <div class="popup hidden" id="success-popup">
+        <span class="close-btn">&times;</span>
+        <h3>Obrigado pelo seu pedido!</h3>
+        <p>Em breve entraremos em contato. Confira abaixo as informações enviadas:</p>
+        <div id="submitted-data">
+            <!-- Informações do formulário serão preenchidas aqui -->
+        </div>
+    </div>
+    <script src="scripts.js"></script>
 </body>
 </html>
